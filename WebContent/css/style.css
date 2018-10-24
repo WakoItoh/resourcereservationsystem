@@ -1,0 +1,185 @@
+@CHARSET "UTF-8";
+
+* {
+	box-sizing: border-box;
+	font-family: "meiryo";
+	font-size: 16px;
+	line-height: 1.4em;
+}
+
+body {
+	margin: 0;
+	color: darkslategray;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 28px;
+}
+
+.header {
+	width: 100%;
+	margin: 0;
+	padding: 4px;
+	background-color: darkslategray;
+	color: white;
+}
+
+/*.footer {
+	width: 100%;
+	margin: 0;
+	padding: 4px;
+	background-color: darkslategray;
+	color: white;
+}*/
+
+.container {
+	width: 980px;
+	margin: 0 auto;
+}
+.small-container {
+	width: 350px;
+	margin: 0 auto;
+}
+
+.field {
+	width: 100%;
+	margin: 0 0 12px;
+}
+
+.large {
+	width: 98%;
+	margin: 0 1%;
+}
+.medium {
+	width: 48%;
+	margin: 0 1%;
+}
+.normal {
+	margin: 0 1%;
+}
+.small {
+	width: 100px;
+	margin: 0 1%;
+}
+
+input,
+select,
+textarea {
+	border-radius: 2px;
+	border: solid 1px slategray;
+}
+
+span.button,
+span.button-dark,
+span.button-submit,
+a.button,
+a.button-dark,
+a.button-submit {
+	display: inline-block;
+}
+
+.button,
+.button:link,
+.button:visited {
+	text-align: center;
+	font-weight: bold;
+	vertical-align: top;
+	font-size: 1em;
+	padding: 2px;
+	border-radius: 4px;
+	border: solid 2px darkslategray;
+	background-color: white;
+	color: darkslategray;
+	text-decoration: none;
+}
+.button:hover {
+	border: solid 2px darkslategray;
+	background-color: whitesmoke;
+}
+.button:active {
+	border: solid 2px darkslategray;
+	background-color: lightgray;
+}
+.button-dark,
+.button-dark:link,
+.button-dark:visited {
+	text-align: center;
+	font-weight: bold;
+	vertical-align: top;
+	font-size: 1em;
+	padding: 2px 0;
+	border-radius: 4px;
+	border: solid 2px white;
+	background-color: darkslategray;
+	color: white;
+	text-decoration: none;
+}
+.button-dark:hover {
+	border: solid 2px white;
+	background-color: slategray;
+}
+.button-dark:active {
+	border: solid 2px white;
+	background-color: lightslategray;
+}
+.button-submit,
+.button-submit:link,
+.button-submit:visited {
+	text-align: center;
+	font-weight: bold;
+	vertical-align: top;
+	font-size: 1em;
+	padding: 2px 0;
+	border-radius: 4px;
+	border: solid 2px navy;
+	background-color: blue;
+	color: white;
+	text-decoration: none;
+}
+.button-submit:hover {
+	border: solid 2px navy;
+	background-color: mediumblue;
+}
+.button-submit:active {
+	border: solid 2px navy;
+	background-color: darkblue;
+}
+
+table.list {
+	width: 100%;
+	border-collapse: collapse;
+}
+table.list th {
+	font-weight: bold;
+	border: solid 1px darkslategray;
+	background-color: darkslategray;
+	color: white;
+	text-align: center;
+}
+table.list td {
+	border: solid 1px darkslategray;
+}
+
+/* .col-x-small {
+	width: 40px;
+} */
+.col-small {
+	width: 100px;
+}
+.col-medium {
+	width: 200px;
+}
+
+.title {
+	font-weight: bold;
+}
+
+.warning {
+	color: red;
+}
+
+.note {
+	margin: 0 12px;
+	font-size: 12px;
+}
