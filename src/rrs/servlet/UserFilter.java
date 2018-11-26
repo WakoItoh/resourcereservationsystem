@@ -9,6 +9,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import rrs.handler.Handler;
@@ -18,7 +19,23 @@ import rrs.handler.UserFilterHandler;
  * Servlet Filter implementation class UserFilter
  */
 // TODO リリース時に適用
-//@WebFilter({ "/reservation", "/resource", "/resourcedetail" })
+@WebFilter({"/reservableresouce",
+        "/reservableresoucesearch",
+        "/reservableresoucesearchnow",
+        "/reservation",
+        "/reservationcancel",
+        "/reservationcancelconfirm",
+        "/reservationcopy",
+        "/reservationdetail",
+        "/reservationedit",
+        "/reservationeditor",
+        "/reservationnow",
+        "/reservationregister",
+        "/reservationregisternow",
+        "/reservationregistrator",
+        "/reservationsearch",
+        "/resource",
+        "/resourcedetail" })
 public class UserFilter implements Filter {
 
     /**

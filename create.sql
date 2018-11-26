@@ -55,8 +55,8 @@ CREATE TABLE reservations
 	use_end timestamp NOT NULL,
 	resource_id int NOT NULL,
 	meeting_name varchar(30) NOT NULL,
-	reserver_id varchar(8) NOT NULL,
-	co_reserver_id varchar(8),
+	reservator_id varchar(8) NOT NULL,
+	co_reservator_id varchar(8),
 	attendance_count int NOT NULL,
 	attendance_type_id int,
 	note varchar(500),
@@ -152,7 +152,7 @@ ALTER TABLE resource_properties
 
 
 ALTER TABLE reservations
-	ADD FOREIGN KEY (reserver_id)
+	ADD FOREIGN KEY (co_reservator_id)
 	REFERENCES users (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
@@ -160,7 +160,7 @@ ALTER TABLE reservations
 
 
 ALTER TABLE reservations
-	ADD FOREIGN KEY (co_reserver_id)
+	ADD FOREIGN KEY (reservator_id)
 	REFERENCES users (id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT

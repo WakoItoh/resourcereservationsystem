@@ -11,6 +11,11 @@ import rrs.dto.Office;
 
 public class OfficeDao {
 
+    /**
+     * 事業所情報を取得する
+     * @return 事業所情報のList
+     * @throws DataAccessException
+     */
     public List<Office> query() throws DataAccessException {
 
         String sql = "select office_id, office_name, office_location from offices order by office_id";

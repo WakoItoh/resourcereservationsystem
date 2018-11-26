@@ -45,11 +45,11 @@
 	</div>
 	<div class="field">
 		<label class="title">利用停止開始日時</label>
-		<div class="normal"><c:out value="${resource.suspendStart}" />&nbsp;</div>
+		<div class="normal"><c:out value="${resource.suspendStartDate}" />&nbsp;<c:out value="${resource.suspendStartTime}" />&nbsp;</div>
 	</div>
 	<div class="field">
 		<label class="title">利用停止終了日時</label>
-		<div class="normal"><c:out value="${resource.suspendEnd}" />&nbsp;</div>
+		<div class="normal"><c:out value="${resource.suspendEndDate}" />&nbsp;<c:out value="${resource.suspendEndTime}" />&nbsp;</div>
 	</div>
 <c:if test="${loginUser.userLevel == 2 && resource.deleted == 0}">
 	<div class="field">

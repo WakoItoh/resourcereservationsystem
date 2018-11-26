@@ -1,9 +1,13 @@
 package rrs.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 public class Resource {
+
+    private static final String DATE_FORMAT_PATTERN = "yyyy-MM-dd";
+    private static final String TIME_FORMAT_PATTERN = "HH:mm";
 
     private int resourceId;
     private String resourceName;
@@ -121,6 +125,50 @@ public class Resource {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getSuspendStartDate() {
+
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_PATTERN);
+        String suspendStartDate = "";
+        if (suspendStart != null) {
+            suspendStartDate = formatter.format(suspendStart);
+        }
+
+        return suspendStartDate;
+    }
+
+    public String getSuspendStartTime() {
+
+        SimpleDateFormat formatter = new SimpleDateFormat(TIME_FORMAT_PATTERN);
+        String suspendStartTime = "";
+        if (suspendStart != null) {
+            suspendStartTime = formatter.format(suspendStart);
+        }
+
+        return suspendStartTime;
+    }
+
+    public String getSuspendEndDate() {
+
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_PATTERN);
+        String suspendEndDate = "";
+        if (suspendEnd != null) {
+            suspendEndDate = formatter.format(suspendEnd);
+        }
+
+        return suspendEndDate;
+    }
+
+    public String getSuspendEndTime() {
+
+        SimpleDateFormat formatter = new SimpleDateFormat(TIME_FORMAT_PATTERN);
+        String suspendEndTime = "";
+        if (suspendEnd != null) {
+            suspendEndTime = formatter.format(suspendEnd);
+        }
+
+        return suspendEndTime;
     }
 
 }

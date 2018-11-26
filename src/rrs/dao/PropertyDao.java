@@ -11,6 +11,11 @@ import rrs.dto.Property;
 
 public class PropertyDao {
 
+    /**
+     * 特性情報を取得する
+     * @return 特性情報のList
+     * @throws DataAccessException
+     */
     public List<Property> query() throws DataAccessException {
 
         String sql = "select property_id, property_name from properties order by property_id";

@@ -35,7 +35,7 @@ public class ResourceEditHandler implements Handler {
         String paramSuspendEndTime = request.getParameter("suspend_end_time");
 
         // 入力データを保持
-        //request.setAttribute("paramResourceId", paramResourceId);
+        request.setAttribute("paramResourceId", paramResourceId);
         request.setAttribute("paramResourceName", paramResourceName);
         request.setAttribute("paramCategory", paramCategory);
         request.setAttribute("paramCapacity", paramCapacity);

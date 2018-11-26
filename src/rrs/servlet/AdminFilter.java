@@ -9,6 +9,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import rrs.handler.AdminFilterHandler;
@@ -18,7 +19,13 @@ import rrs.handler.Handler;
  * Servlet Filter implementation class AdminFilter
  */
 // TODO リリース時に適用
-//@WebFilter({ "/resourcedelete", "/resourcedeleteconfirm", "/resourceedit", "/resourceeditor", "/resourceregister", "/resourceregistrator" })
+@WebFilter({"/resourcedelete",
+        "/resourcedeleteconfirm",
+        "/resourceedit",
+        "/resourceeditconfirm",
+        "/resourceeditor",
+        "/resourceregister",
+        "/resourceregistrator" })
 public class AdminFilter implements Filter {
 
     /**

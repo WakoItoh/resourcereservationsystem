@@ -13,7 +13,7 @@
 <div class="container">
 	<h1>リソース一覧</h1>
 	<div class="field">
-		<a class="button" href="resourceregistrator">リソース登録</a>
+		<a class="medium button" href="resourceregistrator">リソース登録</a>
 	</div>
 <c:forEach var="msg" items="${errorMessageList}">
 	<p class="warning"><c:out value="${msg}" /></p>
@@ -23,7 +23,7 @@
 	<c:remove var="message" />
 </c:if>
 <c:if test="${not empty resourceList}">
-	<table class="list">
+	<table class="large list">
 		<thead>
 			<tr>
 				<th class="col-medium">リソース名</th>

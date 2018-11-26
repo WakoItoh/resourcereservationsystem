@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import rrs.dao.DataAccessException;
+import rrs.dto.Reservation;
 import rrs.dto.Resource;
 import rrs.model.ResourceDeleteConfirmService;
 
@@ -42,6 +43,7 @@ public class ResourceDeleteConfirmHandler implements Handler {
         }
 
         Resource resource = null;
+        List<Reservation> reservationList = null;
 
         // Modelの生成
         ResourceDeleteConfirmService service = new ResourceDeleteConfirmService(resourceId);
@@ -70,6 +72,12 @@ public class ResourceDeleteConfirmHandler implements Handler {
             errorMessageList.add(EM_RSC_002);
             request.setAttribute("errorMessageList", errorMessageList);
             return PAGE_RSC_002;
+        }
+
+        reservationList = service.getReservationList();
+        if (reservationList != null && reservationList.size() != 0) {
+            request.setAttribute("message", PM_RSC_005);
+            request.setAttribute("reservationList", reservationList);
         }
 
         request.setAttribute("resource", resource);

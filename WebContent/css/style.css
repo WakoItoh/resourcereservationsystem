@@ -36,6 +36,7 @@ h1 {
 .container {
 	width: 980px;
 	margin: 0 auto;
+	padding: 0 0 12px;
 }
 .small-container {
 	width: 350px;
@@ -159,6 +160,26 @@ table.list th {
 }
 table.list td {
 	border: solid 1px darkslategray;
+}
+
+table.time {
+}
+table.time th {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+}
+table.time td {
+	height: 1.4em;
+	width: 5px;
+	font-size: 12px;
+	background-color: darkslategray;
+}
+table.time td.available {
+	background-color: whitesmoke;
+}
+table.time td.use {
+	background-color: blue;
 }
 
 /* .col-x-small {

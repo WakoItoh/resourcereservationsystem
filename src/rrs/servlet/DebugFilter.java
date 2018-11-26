@@ -8,7 +8,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +17,7 @@ import rrs.dto.User;
  * Servlet Filter implementation class DebugFilter
  */
 // TODO リリース時に破棄
-@WebFilter("/*")
+//@WebFilter("/*")
 public class DebugFilter implements Filter {
 
     /**
@@ -38,7 +37,7 @@ public class DebugFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpSession session = ((HttpServletRequest) request).getSession(true);
-        session.setAttribute("loginUser", new User("", "", "", "", 2, "", ""));
+        session.setAttribute("loginUser", new User("u0000001", "pa55w0rd", "仲町台", "太郎", 2, "0123456789", "u0000001@example.com"));
 
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

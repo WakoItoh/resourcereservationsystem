@@ -15,7 +15,7 @@
 <c:forEach var="msg" items="${errorMessageList}">
 	<p class="warning"><c:out value="${msg}" /></p>
 </c:forEach>
-	<form action="resourceedit" method="post">
+	<form action="resourceeditconfirm" method="post">
 		<div class="field">
 			<label class="title" for="resource_name">リソース名</label><span class="warning note">必須</span>
 			<div class="normal">
@@ -76,8 +76,8 @@
 			</div>
 		</div>
 		<div class="field">
-			<input type="hidden" name="resource_id" value="<c:out value="${resourceId}" />">
-			<input class="medium button-submit" type="submit" value="変更"><a class="medium button" href="resourcedetail?resource_id=<c:out value="${resourceId}" />">戻る</a>
+			<input type="hidden" name="resource_id" value="<c:out value="${paramResourceId}" />">
+			<input class="medium button-submit" type="submit" value="変更"><a class="medium button" href="resourcedetail?resource_id=<c:out value="${paramResourceId}" />">戻る</a>
 		</div>
 	</form>
 </div>

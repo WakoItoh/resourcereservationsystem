@@ -31,3 +31,11 @@ insert into resources (resource_name, category_id, capacity, office_id, note, su
 insert into resources (resource_name, category_id, capacity, office_id, note, suspend_start, suspend_end, deleted) values ('仲町台102会議室', 1, 1, 1, null, null, null, 1);
 
 insert into resource_properties (resource_id, property_id) values (1, 1);
+
+insert into attendance_types (attendance_type_name) values ('社員のみ');
+insert into attendance_types (attendance_type_name) values ('グループ社員のみ');
+insert into attendance_types (attendance_type_name) values ('お客様含む');
+
+insert into reservations (use_start, use_end, resource_id, meeting_name, reservator_id, co_reservator_id, attendance_count, attendance_type_id, note) values (to_timestamp('2018-11-01 09:00', 'YYYY-MM-DD HH24:MI'), to_timestamp('2018-11-01 12:00', 'YYYY-MM-DD HH24:MI'), 1, '月例会議', 'u0000001', 'u0000002', 100, 1, 'アジェンダは以下の通り。');
+insert into reservations (use_start, use_end, resource_id, meeting_name, reservator_id, co_reservator_id, attendance_count, attendance_type_id, note) values (to_timestamp('2018-11-01 13:00', 'YYYY-MM-DD HH24:MI'), to_timestamp('2018-11-01 17:00', 'YYYY-MM-DD HH24:MI'), 2, '仕様検討会議', 'u0000002', 'u0000003', 4, null, null);
+insert into reservations (use_start, use_end, resource_id, meeting_name, reservator_id, co_reservator_id, attendance_count, attendance_type_id, note) values (to_timestamp('2019-01-01 09:00', 'YYYY-MM-DD HH24:MI'), to_timestamp('2019-01-01 12:00', 'YYYY-MM-DD HH24:MI'), 1, '月例会議', 'u0000001', 'u0000002', 100, 1, 'アジェンダは以下の通り。');

@@ -335,9 +335,14 @@ public class ResourceDao {
                 + " and deleted = 0";
         String deleteResourceProperty = "delete from resource_properties where resource_id = ?";
         String insertResourceProperty = "insert into resource_properties (resource_id, property_id) values (?, ?)";
+        String deleteReservation = "delete from reservations"
+                + " where resource_id = ?"
+                + " and ? < use_end"
+                + " and use_start < ?";
         PreparedStatement pstmt1 = null;
         PreparedStatement pstmt2 = null;
         PreparedStatement pstmt3 = null;
+        PreparedStatement pstmt4 = null;
         int count = 0;
 
         DBHelper dbHelper = new DBHelper();
@@ -368,12 +373,12 @@ public class ResourceDao {
                     if (resource.getSuspendStart() != null) {
                         pstmt1.setTimestamp(6, new Timestamp(resource.getSuspendStart().getTime()));
                     } else {
-                        pstmt1.setTimestamp(6, null);
+                        pstmt1.setNull(6, java.sql.Types.TIMESTAMP);
                     }
                     if (resource.getSuspendEnd() != null) {
                         pstmt1.setTimestamp(7, new Timestamp(resource.getSuspendEnd().getTime()));
                     } else {
-                        pstmt1.setTimestamp(7, null);
+                        pstmt1.setNull(7, java.sql.Types.TIMESTAMP);
                     }
                     pstmt1.setInt(8, resource.getResourceId());
                     count = pstmt1.executeUpdate();
@@ -392,6 +397,14 @@ public class ResourceDao {
                             pstmt3.setInt(2, property.getPropertyId());
                             count += pstmt3.executeUpdate();
                         }
+                    }
+
+                    if (count >= 1 && resource.getSuspendStart() != null && resource.getSuspendEnd() != null) {
+                        pstmt4 = con.prepareStatement(deleteReservation);
+                        pstmt4.setInt(1, resource.getResourceId());
+                        pstmt4.setTimestamp(2, new Timestamp(resource.getSuspendStart().getTime()));
+                        pstmt4.setTimestamp(3, new Timestamp(resource.getSuspendEnd().getTime()));
+                        count += pstmt4.executeUpdate();
                     }
                 }
 
@@ -440,7 +453,11 @@ public class ResourceDao {
         String updateResource = "update resources set"
                 + " deleted = 1"
                 + " where resource_id = ?";
-        PreparedStatement pstmt = null;
+        String deleteReservation = "delete from reservations"
+                + " where resource_id = ?"
+                + " and now() < use_end";
+        PreparedStatement pstmt1 = null;
+        PreparedStatement pstmt2 = null;
         int count = 0;
 
         DBHelper dbHelper = new DBHelper();
@@ -453,9 +470,15 @@ public class ResourceDao {
                 con.setAutoCommit(false);
                 con.commit();
 
-                pstmt = con.prepareStatement(updateResource);
-                pstmt.setInt(1, resourceId);
-                count = pstmt.executeUpdate();
+                pstmt1 = con.prepareStatement(updateResource);
+                pstmt1.setInt(1, resourceId);
+                count = pstmt1.executeUpdate();
+
+                if (count == 1) {
+                    pstmt2 = con.prepareStatement(deleteReservation);
+                    pstmt2.setInt(1, resourceId);
+                    count += pstmt2.executeUpdate();
+                }
 
                 // トランザクション終了
                 con.commit();
@@ -472,7 +495,7 @@ public class ResourceDao {
             } finally {
                 // PreparedStatementのクローズ
                 try {
-                    dbHelper.closeResource(pstmt);
+                    dbHelper.closeResource(pstmt1);
                 } catch (Exception e) {
                     // SQLException以外の例外が発生
                     e.printStackTrace();
@@ -487,4 +510,5 @@ public class ResourceDao {
 
         return count;
     }
+
 }

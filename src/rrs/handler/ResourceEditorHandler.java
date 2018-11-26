@@ -21,14 +21,14 @@ public class ResourceEditorHandler implements Handler {
     @Override
     public String handleService(HttpServletRequest request) {
 
-        boolean submitted = false;
-        if (request.getAttribute("errorMessageList") != null) {
-            submitted = true;
-        }
-
         // URLパラメータ・画面入力があるので、パラメータを取得し、チェックを実行
         int resourceId = 0;
         String paramResourceId = request.getParameter("resource_id");
+
+        boolean edited = false;
+        if (request.getAttribute("errorMessageList") != null) {
+            edited = true;
+        }
 
         List<String> errorMessageList = new ArrayList<String>();
         CommonValidator commonValidator = new CommonValidator();
@@ -82,7 +82,8 @@ public class ResourceEditorHandler implements Handler {
             errorMessageList.add(EM_RSC_002);
             request.setAttribute("errorMessageList", errorMessageList);
             return PAGE_RSC_002;
-        } else if (!submitted) {
+        }
+        if (!edited) {
             // 初期表示
             request.setAttribute("paramResourceName", resource.getResourceName());
             request.setAttribute("paramCategory", String.valueOf(resource.getCategory().getCategoryId()));
@@ -109,7 +110,7 @@ public class ResourceEditorHandler implements Handler {
             }
         }
 
-        request.setAttribute("resourceId", resourceId);
+        request.setAttribute("paramResourceId", resourceId);
 
         // 選択肢Listの取得
         categoryList = service.getCategoryList();
